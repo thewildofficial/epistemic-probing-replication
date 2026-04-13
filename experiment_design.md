@@ -45,9 +45,13 @@ We need questions where we can measure:
 **Minimum viable**: MMLU + GSM8K + a hand-curated ambiguity set (30-50 questions with multiple valid answers)
 
 ### Models
-- Primary: Accessible via Fireworks API (your provider)
-  - Qwen2.5-72B or similar (strong open model)
-  - Llama-3.1-70B (good mid-tier)
+- Primary: Accessible via Fireworks API
+  - `accounts/fireworks/models/mixtral-8x22b-instruct` — clean answers, logprobs work
+  - `accounts/cogito/models/cogito-671b-v2-p1` — clean answers, logprobs work
+  - `accounts/fireworks/models/glm-5p1` — verbose CoT, logprobs work (needs answer extraction)
+  - `accounts/fireworks/models/deepseek-v3p2` — verbose CoT, logprobs work (needs answer extraction)
+- NOTE: Models listed previously (Qwen2.5-72B, Llama-3.1-70B) DO NOT EXIST on Fireworks as of April 2026
+- Logprobs confirmed working on all Fireworks text models (tested April 2026)
 - If budget allows: Claude Haiku via API for judge panel
 
 ### Pipeline
@@ -87,9 +91,9 @@ Phase 3: Evaluation
 - Day 5+: Iterate on paper, add ablations
 
 ## Key Open Questions
-1. Can we get logprobs from Fireworks API? If not, need alternative confidence estimation (self-assessment prompting, consistency-based)
-2. Which models are available and affordable on Fireworks?
-3. Should we start with a smaller pilot (100 questions, 1 model) before committing to full runs?
+1. ~~Can we get logprobs from Fireworks API?~~ **RESOLVED: Yes, logprobs work on 7/8 models (April 2026)**
+2. ~~Which models are available and affordable on Fireworks?~~ **RESOLVED: See Models section above**
+3. Should we start with a smaller pilot (100 questions, 1 model) before committing to full runs? — **Yes, recommended. Start with Mixtral on 100 MMLU questions.**
 
 ## Venues
 - ICLR 2027 (deadline ~Sept 2026) — best fit for understanding-focused contribution
